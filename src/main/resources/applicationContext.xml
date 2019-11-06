@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置该类的相关信息-->
+    <bean  id="user" class="com.baizhi.entity.User">
+        <property name="id" value="1"></property>
+        <property name="username" value="小黑"></property>
+        <property name="password" value="12345"></property>
+        <property name="age" value="18"></property>
+        <!--数组类型赋值-->
+        <property name="names">
+            <array>
+                <value>小黑</value>
+                <value>小白</value>
+                <value>小绿</value>
+                <value>小黄</value>
+            </array>
+        </property>
+        <!--给List类型赋值-->
+        <property name="ls">
+            <list>
+                <value>小黑</value>
+                <value>小白</value>
+                <value>小绿</value>
+                <value>小黑</value>
+            </list>
+        </property>
+        <!--给Set类型赋值-->
+        <property name="st">
+            <set>
+                <value>小黑</value>
+                <value>小白</value>
+                <value>小绿</value>
+                <value>小黑</value>
+            </set>
+        </property>
+        <!--给Map类型赋值-->
+        <property name="maps">
+            <map>
+                <!--代表一个键值对-->
+                <entry>
+                    <!--给键值对中的键赋值-->
+                    <key><value>1</value></key>
+                    <!--给键值对中的值赋值-->
+                    <value>小黑</value>
+                </entry>
+                <entry>
+                    <key><value>2</value></key>
+                    <value>小白</value>
+                </entry>
+                <entry>
+                    <key><value>3</value></key>
+                    <value>小花</value>
+                </entry>
+            </map>
+        </property>
+        <!--给properties类型赋值-->
+        <property name="properties">
+            <props>
+                <prop key="1">小黑</prop>
+                <prop key="2">小白</prop>
+                <prop key="3">小黄</prop>
+            </props>
+        </property>
+    </bean>
+    <!--配置UserDAOImpl类的相关信息-->
+    <bean id="userDAO" class="com.baizhi.dao.UserDAOImpl"></bean>
+
+    <!--配置UserServiceImpl类的相关信息-->
+    <bean id="userService" class="com.baizhi.service.UserServiceImpl" autowire="byType" >
+        <!--第一个userDAO代表Service属性的名字-->
+        <!--第二个userDAO代表UserDAO实现类对象的唯一标识-->
+       <!-- <property name="userDAO"  ref="userDAO"></property>-->
+    </bean>
+
+    <bean id="order" class="com.baizhi.entity.Order">
+        <!--根据属性的名字赋值-->
+       <!-- <constructor-arg name="id"   value="1"></constructor-arg>
+        <constructor-arg name="name"  value="香蕉"></constructor-arg>
+        <constructor-arg name="price" value="18.8"></constructor-arg>-->
+        <!--根据有参构造属性的下标赋值-->
+       <!-- <constructor-arg index="0" value="2"></constructor-arg>
+        <constructor-arg index="1" value="黄瓜"></constructor-arg>
+        <constructor-arg index="2" value="9.9"></constructor-arg>-->
+        <!--根据有参构造属性的类型赋值-->
+        <constructor-arg type="java.lang.String" value="3"></constructor-arg>
+        <constructor-arg type="java.lang.String" value="茄子"></constructor-arg>
+        <constructor-arg type="java.lang.Double" value="88.88"></constructor-arg>
+    </bean>
+
+    <!--配置MyConnection类的信息-->
+    <bean id="connection" class="com.baizhi.factorybean.MyConnection">
+    </bean>
+    <!--配置MySqlSessionFactory类的相关信息-->
+    <bean id="sqlSessionFactory" class="com.baizhi.factorybean.MySqlSessionFactory">
+    </bean>
+
+    <!--配置Student类的相关信息-->
+    <bean id="student" class="com.baizhi.entity.Student" init-method="init" destroy-method="destory">
+
+    </bean>
+</beans>
