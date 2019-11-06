@@ -11,6 +11,7 @@ public class MyConnection implements FactoryBean<Connection> {
      * 作用：书写创建复杂对象的步骤
      *
      * */
+     //我来啦 
     @Override
     public Connection getObject() throws Exception {
         //加载驱动
